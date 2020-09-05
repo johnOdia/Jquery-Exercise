@@ -7,7 +7,7 @@ $(function () {
 
 
     //EVENT HANDLERS =>
-    let moviesArray = {} //All movie titles and ratings go in here as nested objects with the name as key
+    let moviesObject = {} //All movie titles and ratings go in here as nested objects with the name as key
 
     //Recieves input values and calls addMovie() helper function to render to the DOM
     function handleSubmitForm(e) {
@@ -16,7 +16,7 @@ $(function () {
         let rating = $('#rating').val()
         if (title !== '') {
             addMovie(title, rating)
-            moviesArray[title] = { name: title, rating: rating }
+            moviesObject[title] = { name: title, rating: rating }
             $('#title').val('')
             $('#rating').val(0)
         }
@@ -27,6 +27,7 @@ $(function () {
         let item = $(e.target).parent()
         if ($(e.target).text() === 'Delete') {
             item.remove()
+            delete moviesObject[$(e.target).closest('tr').children('.col-8').text()]
         }
     }
 
@@ -37,9 +38,9 @@ $(function () {
         let sortedTitles
         let sortedRatings
         $('tbody').text('')
-        for (let movie in moviesArray) {
-            movieTitles.push(moviesArray[movie].name)
-            movieRatings.push(moviesArray[movie].rating)
+        for (let movie in moviesObject) {
+            movieTitles.push(moviesObject[movie].name)
+            movieRatings.push(moviesObject[movie].rating)
         }
         if ($(e.target).data('item') === 'sortNameUp') {
             sortedTitles = sortNameUp(movieTitles)
@@ -107,7 +108,6 @@ $(function () {
         let userRatings = sortRatingUp(movieRatings)
         let sortInDescendingOrder = []
         for (let i = userRatings.length - 1; i >= 0; i--) {
-            console.log(userRatings[i])
             sortInDescendingOrder.push(userRatings[i])
         }
         return sortInDescendingOrder
@@ -116,9 +116,9 @@ $(function () {
     //This function accepts the earlier sorted ratings array as an argument and calls addMovie to render to the DOM
     function sortByRatings(ratingsArray) {
         return ratingsArray.map(val => {
-            for (let key in moviesArray) {
-                if (moviesArray[key].rating === val) {
-                    addMovie(moviesArray[key].name, moviesArray[key].rating)
+            for (let key in moviesObject) {
+                if (moviesObject[key].rating === val) {
+                    addMovie(moviesObject[key].name, moviesObject[key].rating)
                 }
             }
         })
@@ -127,7 +127,7 @@ $(function () {
     //Does same for the title
     function sortByTitle(titlesArray) {
         return titlesArray.map(val => {
-            addMovie(moviesArray[val].name, moviesArray[val].rating)
+            addMovie(moviesObject[val].name, moviesObject[val].rating)
         })
     }
 
