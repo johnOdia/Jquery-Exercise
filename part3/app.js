@@ -135,5 +135,6 @@ $(function () {
     $('[data-toggle="sortNameDown"]').tooltip()
     $('[data-toggle="sortRatingUp"]').tooltip()
     $('[data-toggle="sortRatingDown"]').tooltip()
+    $('[data-toggle="link"]').tooltip()
 
 })
