@@ -11,6 +11,18 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="./app.js"></script>
     <title>Document</title>
+    <style>
+        #hide {
+  overflow : hidden; /* Hide scrollbars */
+}
+        .movie{
+            transition: all 0.7s ease-out;
+        }
+        .movie-fall{
+            transform: translateY(12rem) rotateZ(10deg);
+            opacity: 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -28,7 +40,7 @@
             </form>
         </div>
         <span class="table-responsive text-center">
-            <table class="table table-stripped table-bordered">
+            <table class="table table-stripped table-bordered" id="hide">
                 <thead>
                     <tr class="d-flex bg-light">
                         <td class="col-8" scope='col'><b>Movie<span data-item="sortNameUp"
@@ -42,7 +54,7 @@
                         </td>
                         <td class="col-2" scope='col'><b>Rating<span data-item="sortRatingUp"
                                     title="Sort Ratings in ascending order"
-                                    class="ml-3 ml-1 p-0 mr-1 btn btn-info sort">&#x2B9D</span><span
+                                    class="ml-1 p-0 mr-1 btn btn-info sort">&#x2B9D</span><span
                                     data-item="sortRatingDown" title="Sort Ratings in descending order"
                                     class="sort btn btn-danger p-0">&#x2B9F</span b></b>
                         </td>
@@ -54,7 +66,7 @@
             </table>
             </div>
     </main>
-    <footer class="text-center my-5"><a href="https://github.com/johnOdia/Jquery-Exercise/tree/master/part3" data-link="link" title="Link to github Repository"><button type="button" class="btn btn-link"><i>Built by John Odia</i></button></a></footer>
+    <footer class="text-center mt-2 mb-5"><a href="https://github.com/johnOdia/Jquery-Exercise/tree/master/part3" data-link="link" title="Link to github Repository"><button type="button" class="btn btn-link"><i>Built by John Odia</i></button></a></footer>
 </body>
 
 </html>
