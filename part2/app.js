@@ -11,9 +11,6 @@
      let existingTodos = JSON.parse(localStorage.getItem('todos'))
      if(input.val() != ''){
          addTodo(input.val())
-         let todos = []
-         todos.push(input.val())
-         localStorage.setItem('todos',JSON.stringify(todos))
          if (existingTodos === null){
              existingTodos = ['anything']
          }
